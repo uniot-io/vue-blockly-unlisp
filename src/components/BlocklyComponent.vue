@@ -21,6 +21,12 @@ let BlocklyComponent = {
     }
   },
 
+  methods: {
+    resize () {
+      Blockly.svgResize(this.workspace)
+    }
+  },
+
   mounted () {
     var options = this.$props.options || {}
     if (!options.toolbox) {
