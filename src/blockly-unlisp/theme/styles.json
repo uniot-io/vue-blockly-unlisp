@@ -3,60 +3,60 @@
     "colour": "#4baea0", 
     "colourPrimary": "#4baea0", 
     "colourSecondary": "#a5d7d0", 
-    "colourTertiary": "#3c8b80"
+    "colourTertiary": "#409488"
   }, 
   "list_blocks": {
     "colour": "#f47c7c", 
     "colourPrimary": "#f47c7c", 
     "colourSecondary": "#fabebe", 
-    "colourTertiary": "#c36363"
+    "colourTertiary": "#cf6969"
   }, 
   "logic_blocks": {
     "colour": "#6cb2d1", 
     "colourPrimary": "#6cb2d1", 
     "colourSecondary": "#b6d9e8", 
-    "colourTertiary": "#568ea7"
+    "colourTertiary": "#5c97b2"
   }, 
   "loop_blocks": {
     "colour": "#fda77f", 
     "colourPrimary": "#fda77f", 
     "colourSecondary": "#fed3bf", 
-    "colourTertiary": "#ca8666"
+    "colourTertiary": "#d78e6c"
   }, 
   "math_blocks": {
     "colour": "#e4a0b7", 
     "colourPrimary": "#e4a0b7", 
     "colourSecondary": "#f2d0db", 
-    "colourTertiary": "#b68092"
+    "colourTertiary": "#c2889c"
   }, 
   "procedure_blocks": {
     "colour": "#b399d4", 
     "colourPrimary": "#b399d4", 
     "colourSecondary": "#d9ccea", 
-    "colourTertiary": "#8f7aaa"
+    "colourTertiary": "#9882b4"
   }, 
   "special_blocks": {
     "colour": "#8195ff", 
     "colourPrimary": "#8195ff", 
     "colourSecondary": "#c0caff", 
-    "colourTertiary": "#6777cc"
+    "colourTertiary": "#6e7fd9"
   }, 
   "text_blocks": {
     "colour": "#7caa98", 
     "colourPrimary": "#7caa98", 
     "colourSecondary": "#bed5cc", 
-    "colourTertiary": "#63887a"
+    "colourTertiary": "#699181"
   }, 
   "variable_blocks": {
     "colour": "#8da1b9", 
     "colourPrimary": "#8da1b9", 
     "colourSecondary": "#c6d0dc", 
-    "colourTertiary": "#718194"
+    "colourTertiary": "#78899d"
   }, 
   "variable_dynamic_blocks": {
     "colour": "#8da1b9", 
     "colourPrimary": "#8da1b9", 
     "colourSecondary": "#c6d0dc", 
-    "colourTertiary": "#718194"
+    "colourTertiary": "#78899d"
   }
 }

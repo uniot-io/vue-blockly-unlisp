@@ -76,7 +76,14 @@ export default BlocklyComponent
   stroke: rgb(90, 90, 90);
   stroke-width: 2px;
   stroke-dasharray: 3;
-  animation: dash 90s linear;
+  animation: dash 120s linear;
+}
+
+.blocklyHighlightedConnectionPath {
+  stroke: rgb(90, 90, 90);
+  stroke-width: 3px;
+  stroke-dasharray: 3;
+  animation: dash 70s linear;
 }
 
 @keyframes dash {

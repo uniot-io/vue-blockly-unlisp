@@ -30,7 +30,8 @@ export default {
             snap: true
           },
         toolbox: UnlispToolbox,
-        theme: UnlispTheme
+        theme: UnlispTheme,
+        renderer: 'thrasos'
       }
     }
   },
