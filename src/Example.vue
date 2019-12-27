@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { BlocklyComponent, BlocklyUnlisp, UnlispToolbox } from './lib'
+import { BlocklyComponent, BlocklyUnlisp, UnlispToolbox, UnlispTheme } from './lib'
 
 export default {
   name: 'example',
@@ -29,7 +29,8 @@ export default {
             colour: '#ccc',
             snap: true
           },
-        toolbox: UnlispToolbox
+        toolbox: UnlispToolbox,
+        theme: UnlispTheme
       }
     }
   },

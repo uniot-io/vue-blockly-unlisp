@@ -1,0 +1,12 @@
+{
+  "colour": "#4baea0",
+  "logic_blocks": "#6CB2D1",
+  "list_blocks": "#F47C7C",
+  "loop_blocks": "#fda77f",
+  "math_blocks": "#E4A0B7",
+  "procedure_blocks": "#B399D4",
+  "text_blocks": "#7CAA98",
+  "variable_blocks": "#8DA1B9",
+  "variable_dynamic_blocks": "#8DA1B9",
+  "special_blocks": "#8195ff"
+}

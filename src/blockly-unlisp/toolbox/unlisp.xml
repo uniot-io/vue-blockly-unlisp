@@ -1,5 +1,5 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
-  <category name="Logic" colour="#5b80a5">
+  <category name="Logic" categorystyle="logic_blocks">
     <block type="controls_if"></block>
     <block type="logic_compare">
       <field name="OP">EQ</field>
@@ -13,7 +13,7 @@
     </block>
     <block type="logic_ternary"></block>
   </category>
-  <category name="Math" colour="#5b67a5">
+  <category name="Math" categorystyle="math_blocks">
     <block type="math_number">
       <field name="NUM">0</field>
     </block>
@@ -60,7 +60,7 @@
       </value>
     </block>
   </category>
-  <category name="Loops" colour="#5ba55b">
+  <category name="Loops" categorystyle="loop_blocks">
     <block type="unlisp_while_itr">
       <field name="ITR">iterator</field>
     </block>
@@ -75,7 +75,7 @@
       <field name="MODE">WHILE</field>
     </block>
   </category>
-  <category name="Text" colour="#5ba58c">
+  <category name="Text" categorystyle="text_blocks">
     <block type="text">
       <field name="TEXT"></field>
     </block>
@@ -125,7 +125,7 @@
       </value>
     </block>
   </category>
-  <category name="Lists" colour="#745ba5">
+  <category name="Lists" categorystyle="list_blocks">
     <block type="lists_create_with">
       <mutation items="0"></mutation>
     </block>
@@ -137,10 +137,10 @@
     <block type="unlisp_list_cdr"></block>
   </category>
   <sep></sep>
-  <category name="Variables" colour="#a55b80" custom="VARIABLE"></category>
-  <category name="Functions" colour="#995ba5" custom="PROCEDURE"></category>
+  <category name="Variables" categorystyle="variable_blocks" custom="VARIABLE"></category>
+  <category name="Functions" categorystyle="procedure_blocks" custom="PROCEDURE"></category>
   <sep></sep>
-  <category name="Special" colour="#9857ff">
+  <category name="Special" categorystyle="special_blocks">
     <block type="unlisp_special_task">
       <value name="TIMES">
         <shadow type="math_number">

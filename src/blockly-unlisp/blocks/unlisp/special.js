@@ -59,7 +59,7 @@ Blockly.defineBlocksWithJsonArray([
       }
     ],
     'inputsInline': true,
-    'colour': '#9857ff',
+    'style': 'special_blocks',
     'tooltip': '',
     'helpUrl': '',
     'extensions': ['controls_flow_task_count_check']
@@ -74,7 +74,7 @@ Blockly.defineBlocksWithJsonArray([
     }],
     'inputsInline': true,
     'output': 'Number',
-    'colour': '#9f42e6',
+    'style': 'special_blocks',
     'tooltip': '',
     'helpUrl': ''
   },
@@ -99,7 +99,7 @@ Blockly.defineBlocksWithJsonArray([
     'inputsInline': true,
     'previousStatement': null,
     'nextStatement': null,
-    'colour': '#9f42e6',
+    'style': 'special_blocks',
     'tooltip': '',
     'helpUrl': ''
   }
@@ -117,7 +117,7 @@ Blockly.Blocks['unlisp_special_task_pass'] = {
       }],
       'inputsInline': true,
       'output': 'Number',
-      'colour': '#9857ff',
+      'style': 'special_blocks',
       'tooltip': '',
       'helpUrl': ''
     })

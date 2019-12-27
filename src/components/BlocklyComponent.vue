@@ -46,3 +46,42 @@ export default BlocklyComponent
   text-align: left;
 }
 </style>
+
+<style>
+.blocklyToolboxDiv {
+  background-color: #EAECF0;
+}
+
+.blocklyFlyoutBackground {
+  fill: #EAECF0;
+}
+
+.blocklyIconShape {
+  fill: #4263a5;
+}
+
+.blocklyCommentTextarea {
+  background-color: #FCF1D8;
+}
+
+.blocklyFlyoutButton {
+  fill: #8DA1B9;
+}
+
+.blocklyFlyoutButton:hover {
+  fill: #a2b7d0;
+}
+
+.blocklySelected>.blocklyPath {
+  stroke: rgb(90, 90, 90);
+  stroke-width: 2px;
+  stroke-dasharray: 3;
+  animation: dash 90s linear;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 1000;
+  }
+}
+</style>
