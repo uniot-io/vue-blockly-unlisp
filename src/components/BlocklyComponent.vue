@@ -33,6 +33,7 @@ let BlocklyComponent = {
       options.toolbox = this.$refs["blockly-toolbox"]
     }
     this.workspace = Blockly.inject(this.$refs["blockly-div"], options)
+    Blockly.BlockSvg.START_HAT = true
   }
 }
 
