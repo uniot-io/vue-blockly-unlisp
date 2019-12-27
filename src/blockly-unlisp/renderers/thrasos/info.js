@@ -40,6 +40,7 @@ Blockly.thrasos = {}
  */
 Blockly.thrasos.RenderInfo = function (renderer, block) {
   Blockly.thrasos.RenderInfo.superClass_.constructor.call(this, renderer, block)
+  this.constants_.MIN_BLOCK_HEIGHT = 25
 }
 Blockly.utils.object.inherits(Blockly.thrasos.RenderInfo,
   Blockly.blockRendering.RenderInfo)
@@ -344,6 +345,7 @@ Blockly.thrasos.RenderInfo.prototype.finalize_ = function () {
     this.recordElemPositions_(row)
   }
 
+  yCursor += 1
   this.bottomRow.baseline = yCursor - this.bottomRow.descenderHeight
   this.widthWithChildren = widestRowWithConnectedBlocks + this.startX
 
