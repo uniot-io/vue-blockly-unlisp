@@ -22,6 +22,7 @@ import './generators/unlisp/variables'
 import './generators/unlisp/variables_dynamic'
 
 import './renderers/thrasos/info'
+import './renderers/thrasos/drawer'
 import './renderers/thrasos/renderer'
 
 const BlocklyUnlisp = Blockly.UnLisp

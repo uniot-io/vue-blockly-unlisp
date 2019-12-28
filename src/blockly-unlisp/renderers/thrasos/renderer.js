@@ -46,4 +46,19 @@ Blockly.thrasos.Renderer.prototype.makeRenderInfo_ = function (block) {
   return new Blockly.thrasos.RenderInfo(this, block)
 }
 
+/**
+ * Create a new instance of the renderer's drawer.
+ * @param {!Blockly.BlockSvg} block The block to render.
+ * @param {!Blockly.blockRendering.RenderInfo} info An object containing all
+ *   information needed to render this block.
+ * @return {!Blockly.thrasos.Drawer} The drawer.
+ * @protected
+ * @override
+ */
+Blockly.thrasos.Renderer.prototype.makeDrawer_ = function (block, info) {
+  return new Blockly.thrasos.Drawer(block,
+    /** @type {!Blockly.thrasos.RenderInfo} */
+    (info))
+}
+
 Blockly.blockRendering.register('thrasos', Blockly.thrasos.Renderer)
