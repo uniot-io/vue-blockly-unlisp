@@ -26,6 +26,16 @@ let BlocklyComponent = {
       Blockly.svgResize(this.workspace)
     },
 
+    serialize () {
+      const xml = Blockly.Xml.workspaceToDom(this.workspace)
+      return Blockly.Xml.domToText(xml)
+    },
+
+    deserialize (value) {
+      const xml = Blockly.Xml.textToDom(value)
+      Blockly.Xml.domToWorkspace(xml, this.workspace)
+    },
+
     injectCustomFilter () {
       const defs = document.getElementsByTagName('defs')[0]
       if (defs) {
