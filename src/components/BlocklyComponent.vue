@@ -24,6 +24,41 @@ let BlocklyComponent = {
   methods: {
     resize () {
       Blockly.svgResize(this.workspace)
+    },
+
+    injectCustomFilter () {
+      const defs = document.getElementsByTagName('defs')[0]
+      if (defs) {
+        const rnd = String(Math.random()).substring(2)
+        const customFilter = Blockly.utils.dom.createSvgElement('filter',
+          { 'id': 'customFilter' + rnd },
+          defs)
+        Blockly.utils.dom.createSvgElement('feMorphology',
+          { 'in': 'SourceAlpha', 'operator': 'erode', 'radius': 1, 'result': 'erode1' },
+          customFilter)
+        Blockly.utils.dom.createSvgElement('feFlood',
+          { 'flood-color': '#fff', 'flood-opacity': '0.4', 'result': 'flood1' },
+          customFilter)
+        Blockly.utils.dom.createSvgElement('feComposite',
+          {
+            'in': 'flood1',
+            'in2': 'erode1',
+            'operator': 'in',
+            'result': 'specOut'
+          },
+          customFilter)
+        const feMerge = Blockly.utils.dom.createSvgElement('feMerge',
+          {},
+          customFilter)
+        Blockly.utils.dom.createSvgElement('feMergeNode',
+          { 'in': 'SourceGraphic' },
+          feMerge)
+        Blockly.utils.dom.createSvgElement('feMergeNode',
+          { 'in': 'specOut' },
+          feMerge)
+        return customFilter.id
+      }
+      return null
     }
   },
 
@@ -34,6 +69,10 @@ let BlocklyComponent = {
     }
     this.workspace = Blockly.inject(this.$refs["blockly-div"], options)
     Blockly.BlockSvg.START_HAT = true
+    const filterId = this.injectCustomFilter()
+    if (filterId) {
+      this.workspace.options.embossFilterId = filterId
+    }
   }
 }
 
@@ -49,6 +88,11 @@ export default BlocklyComponent
 </style>
 
 <style>
+.blocklyMinimalBody {
+  background: unset !important;
+  padding: 2px !important;
+}
+
 .blocklyToolboxDiv {
   background-color: #EAECF0;
 }
@@ -63,6 +107,7 @@ export default BlocklyComponent
 
 .blocklyCommentTextarea {
   background-color: #FCF1D8;
+  border-radius: 3px;
 }
 
 .blocklyFlyoutButton {
