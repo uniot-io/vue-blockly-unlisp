@@ -43,6 +43,8 @@ Blockly.UnLisp['controls_ifelse'] = Blockly.UnLisp['controls_if']
 
 Blockly.UnLisp['logic_compare'] = function (block) {
   // Comparison operator.
+  // TODO: make sure that is enough... checkChildrenType returns true if stumbled upon on variable
+  // TODO: return a non-binary value to make a decision here
   var OP_EQ = Blockly.UnLisp.checkChildrenType(block, ['A', 'B'], 'Number') ? '=' : 'eq'
   var OPERATORS = {
     'EQ': OP_EQ,

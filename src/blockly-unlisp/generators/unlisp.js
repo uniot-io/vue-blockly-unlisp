@@ -175,7 +175,13 @@ Blockly.UnLisp.checkChildrenType = function (block, fieldNames, type) {
   const names = Array.isArray(fieldNames) ? fieldNames : [fieldNames]
   for (let i = 0; i < names.length; i++) {
     const target = block.getInputTargetBlock(names[i])
-    if (!target || target.outputConnection.check_.indexOf(type) === -1) {
+    if (!target) {
+      return false
+    }
+    if (!target.outputConnection.check_) {
+      return true
+    }
+    if (target.outputConnection.check_.indexOf(type) === -1) {
       return false
     }
   }
