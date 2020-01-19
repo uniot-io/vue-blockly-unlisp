@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { BlocklyComponent, BlocklyUnlisp, UnlispToolbox, UnlispTheme } from './lib'
+import { BlocklyComponent } from './lib'
 
 export default {
   name: 'example',
@@ -22,22 +22,15 @@ export default {
     return {
       code: '',
       options: {
-        grid:
-          {
-            spacing: 25,
-            length: 3,
-            colour: '#ccc',
-            snap: true
-          },
-        toolbox: UnlispToolbox,
-        theme: UnlispTheme,
-        renderer: 'thrasos'
+        grid: {
+          colour: '#faa'
+        }
       }
     }
   },
   methods: {
     showCode() {
-      this.code = BlocklyUnlisp.workspaceToCode(this.$refs['blockly'].workspace)
+      this.code = this.$refs.blockly.getCode()
     }
   }
 }

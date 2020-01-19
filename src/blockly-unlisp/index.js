@@ -1,5 +1,3 @@
-/* eslint import/no-webpack-loader-syntax: off */
-import * as Blockly from 'blockly/core'
 import UnlispToolbox from 'raw-loader!./toolbox/unlisp.xml'
 import UnlispTheme from './theme/unlisp'
 
@@ -25,10 +23,7 @@ import './renderers/thrasos/info'
 import './renderers/thrasos/drawer'
 import './renderers/thrasos/renderer'
 
-const BlocklyUnlisp = Blockly.UnLisp
-
 export {
-  BlocklyUnlisp,
   UnlispToolbox,
   UnlispTheme
 }

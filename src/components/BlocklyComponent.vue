@@ -1,15 +1,11 @@
 <template>
-  <div>
-    <div class="blockly-div" ref="blockly-div">
-    </div>
-    <xml ref="blockly-toolbox" style="display:none">
-      <slot></slot>
-    </xml>
-  </div>
+  <div class="blockly-div" ref="blockly-div" />
 </template>
 
 <script>
 import Blockly from 'blockly'
+import merge from 'lodash.merge'
+import { UnlispToolbox, UnlispTheme } from '../blockly-unlisp'
 
 let BlocklyComponent = {
   name: 'BlocklyComponent',
@@ -17,13 +13,48 @@ let BlocklyComponent = {
 
   data () {
     return {
-      workspace: null
+      workspace: null,
+      defaultOptions: {
+        grid:
+          {
+            spacing: 25,
+            length: 3,
+            colour: '#ccc',
+            snap: true
+          },
+        zoom:
+          {
+            controls: true,
+            wheel: true,
+            startScale: 1.0,
+            maxScale: 2,
+            minScale: 0.5,
+            scaleSpeed: 1.2
+          },
+        toolbox: UnlispToolbox,
+        theme: UnlispTheme,
+        renderer: 'thrasos'
+      }
+    }
+  },
+
+  mounted () {
+    var options = merge(this.defaultOptions, this.options)
+    this.workspace = Blockly.inject(this.$refs['blockly-div'], options)
+    Blockly.BlockSvg.START_HAT = true
+    const filterId = this._injectCustomFilter()
+    if (filterId) {
+      this.workspace.options.embossFilterId = filterId
     }
   },
 
   methods: {
     resize () {
       Blockly.svgResize(this.workspace)
+    },
+
+    getCode() {
+      return Blockly.UnLisp.workspaceToCode(this.workspace)
     },
 
     serialize () {
@@ -36,7 +67,7 @@ let BlocklyComponent = {
       Blockly.Xml.domToWorkspace(xml, this.workspace)
     },
 
-    injectCustomFilter () {
+    _injectCustomFilter () {
       const defs = document.getElementsByTagName('defs')[0]
       if (defs) {
         const rnd = String(Math.random()).substring(2)
@@ -69,19 +100,6 @@ let BlocklyComponent = {
         return customFilter.id
       }
       return null
-    }
-  },
-
-  mounted () {
-    var options = this.$props.options || {}
-    if (!options.toolbox) {
-      options.toolbox = this.$refs["blockly-toolbox"]
-    }
-    this.workspace = Blockly.inject(this.$refs["blockly-div"], options)
-    Blockly.BlockSvg.START_HAT = true
-    const filterId = this.injectCustomFilter()
-    if (filterId) {
-      this.workspace.options.embossFilterId = filterId
     }
   }
 }
