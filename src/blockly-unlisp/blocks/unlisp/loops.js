@@ -101,7 +101,8 @@ Blockly.defineBlocksWithJsonArray([
 ])
 
 Blockly.Blocks['unlisp_while_itr'] = {
-  // Value input.
+  guilty: false,
+
   init: function () {
     this.jsonInit({
       'message0': '%1',
@@ -137,7 +138,9 @@ Blockly.Blocks['unlisp_while_itr'] = {
       } else {
         this.setWarningText(null)
         if (!this.isInFlyout) {
-          this.setEnabled(true)
+          const enabled = !this.disabled
+          this.setEnabled(this.guilty || enabled)
+          this.guilty = false
         }
         return
       }
@@ -147,11 +150,14 @@ Blockly.Blocks['unlisp_while_itr'] = {
     this.setWarningText(whyMsg)
     if (!this.isInFlyout && !this.getInheritedDisabled()) {
       this.setEnabled(false)
+      this.guilty = true
     }
   }
 }
 
 Blockly.Constants.Loops.CONTROL_FLOW_NESTED_LOOP_CHECK_MIXIN = {
+  guilty: false,
+
   onchange: function () {
     if (!this.workspace.isDragging || this.workspace.isDragging()) {
       return // Don't change state at the start of a drag.
@@ -161,11 +167,14 @@ Blockly.Constants.Loops.CONTROL_FLOW_NESTED_LOOP_CHECK_MIXIN = {
       this.setWarningText('Nested loops are prohibited!') // TODO: move msg to dictionary
       if (!this.isInFlyout && !this.getInheritedDisabled()) {
         this.setEnabled(false)
+        this.guilty = true
       }
     } else {
       this.setWarningText(null)
       if (!this.isInFlyout) {
-        this.setEnabled(true)
+        const enabled = !this.disabled
+        this.setEnabled(this.guilty || enabled)
+        this.guilty = false
       }
     }
   }

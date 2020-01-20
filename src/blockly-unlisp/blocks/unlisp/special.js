@@ -106,7 +106,8 @@ Blockly.defineBlocksWithJsonArray([
 ])
 
 Blockly.Blocks['unlisp_special_task_pass'] = {
-  // Value input.
+  guilty: false,
+
   init: function () {
     this.jsonInit({
       'message0': '%1',
@@ -147,7 +148,9 @@ Blockly.Blocks['unlisp_special_task_pass'] = {
       if (!whyMsg) {
         this.setWarningText(null)
         if (!this.isInFlyout) {
-          this.setEnabled(true)
+          const enabled = !this.disabled
+          this.setEnabled(this.guilty || enabled)
+          this.guilty = false
         }
         return
       }
@@ -157,11 +160,14 @@ Blockly.Blocks['unlisp_special_task_pass'] = {
     this.setWarningText(whyMsg)
     if (!this.isInFlyout && !this.getInheritedDisabled()) {
       this.setEnabled(false)
+      this.guilty = true
     }
   }
 }
 
 Blockly.Constants.Loops.CONTROL_FLOW_TASK_COUNT_CHECK_MIXIN = {
+  guilty: false,
+
   onchange: function () {
     if (!this.workspace.isDragging || this.workspace.isDragging()) {
       return // Don't change state at the start of a drag.
@@ -175,11 +181,14 @@ Blockly.Constants.Loops.CONTROL_FLOW_TASK_COUNT_CHECK_MIXIN = {
       this.setWarningText('Only one task allowed')
       if (!this.isInFlyout && !this.getInheritedDisabled()) {
         this.setEnabled(false)
+        this.guilty = true
       }
     } else {
       this.setWarningText(null)
       if (!this.isInFlyout) {
-        this.setEnabled(true)
+        const enabled = !this.disabled
+        this.setEnabled(this.guilty || enabled)
+        this.guilty = false
       }
     }
   }
