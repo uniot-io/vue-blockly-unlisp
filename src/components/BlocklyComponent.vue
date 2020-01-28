@@ -53,7 +53,11 @@ let BlocklyComponent = {
       Blockly.svgResize(this.workspace)
     },
 
-    getCode() {
+    getBlockly () {
+      return Blockly
+    },
+
+    getCode () {
       return Blockly.UnLisp.workspaceToCode(this.workspace)
     },
 
