@@ -19,9 +19,9 @@ import './generators/unlisp/procedures'
 import './generators/unlisp/variables'
 import './generators/unlisp/variables_dynamic'
 
-import './renderers/thrasos/info'
-import './renderers/thrasos/drawer'
-import './renderers/thrasos/renderer'
+import './renderers/telesphorus/info'
+import './renderers/telesphorus/drawer'
+import './renderers/telesphorus/renderer'
 
 export {
   UnlispToolbox,

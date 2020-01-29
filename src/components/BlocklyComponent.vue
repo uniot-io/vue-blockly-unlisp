@@ -33,7 +33,7 @@ let BlocklyComponent = {
           },
         toolbox: UnlispToolbox,
         theme: UnlispTheme,
-        renderer: 'thrasos'
+        renderer: 'telesphorus'
       }
     }
   },

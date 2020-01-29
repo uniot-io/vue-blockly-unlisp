@@ -16,7 +16,7 @@
  */
 
 /**
- * @fileoverview Thrasos renderer.
+ * @fileoverview Telesphorus renderer.
  * @author fenichel@google.com (Rachel Fenichel)
  */
 'use strict'
@@ -24,26 +24,26 @@
 import * as Blockly from 'blockly/core'
 
 /**
- * The thrasos renderer.
+ * The telesphorus renderer.
  * @package
  * @constructor
  * @extends {Blockly.blockRendering.Renderer}
  */
-Blockly.thrasos.Renderer = function () {
-  Blockly.thrasos.Renderer.superClass_.constructor.call(this)
+Blockly.telesphorus.Renderer = function () {
+  Blockly.telesphorus.Renderer.superClass_.constructor.call(this)
 }
-Blockly.utils.object.inherits(Blockly.thrasos.Renderer,
+Blockly.utils.object.inherits(Blockly.telesphorus.Renderer,
   Blockly.blockRendering.Renderer)
 
 /**
  * Create a new instance of the renderer's render info object.
  * @param {!Blockly.BlockSvg} block The block to measure.
- * @return {!Blockly.thrasos.RenderInfo} The render info object.
+ * @return {!Blockly.telesphorus.RenderInfo} The render info object.
  * @protected
  * @override
  */
-Blockly.thrasos.Renderer.prototype.makeRenderInfo_ = function (block) {
-  return new Blockly.thrasos.RenderInfo(this, block)
+Blockly.telesphorus.Renderer.prototype.makeRenderInfo_ = function (block) {
+  return new Blockly.telesphorus.RenderInfo(this, block)
 }
 
 /**
@@ -51,14 +51,14 @@ Blockly.thrasos.Renderer.prototype.makeRenderInfo_ = function (block) {
  * @param {!Blockly.BlockSvg} block The block to render.
  * @param {!Blockly.blockRendering.RenderInfo} info An object containing all
  *   information needed to render this block.
- * @return {!Blockly.thrasos.Drawer} The drawer.
+ * @return {!Blockly.telesphorus.Drawer} The drawer.
  * @protected
  * @override
  */
-Blockly.thrasos.Renderer.prototype.makeDrawer_ = function (block, info) {
-  return new Blockly.thrasos.Drawer(block,
-    /** @type {!Blockly.thrasos.RenderInfo} */
+Blockly.telesphorus.Renderer.prototype.makeDrawer_ = function (block, info) {
+  return new Blockly.telesphorus.Drawer(block,
+    /** @type {!Blockly.telesphorus.RenderInfo} */
     (info))
 }
 
-Blockly.blockRendering.register('thrasos', Blockly.thrasos.Renderer)
+Blockly.blockRendering.register('telesphorus', Blockly.telesphorus.Renderer)

@@ -2,15 +2,15 @@
 
 import * as Blockly from 'blockly/core'
 
-Blockly.thrasos.Drawer = function (block, info) {
-  Blockly.thrasos.Drawer.superClass_.constructor.call(this, block, info)
+Blockly.telesphorus.Drawer = function (block, info) {
+  Blockly.telesphorus.Drawer.superClass_.constructor.call(this, block, info)
 }
-Blockly.utils.object.inherits(Blockly.thrasos.Drawer, Blockly.blockRendering.Drawer)
+Blockly.utils.object.inherits(Blockly.telesphorus.Drawer, Blockly.blockRendering.Drawer)
 
 /**
  * @override
  */
-Blockly.thrasos.Drawer.prototype.drawTop_ = function () {
+Blockly.telesphorus.Drawer.prototype.drawTop_ = function () {
   const topRow = this.info_.topRow
   const elements = topRow.elements
   let heightCorrection = 0

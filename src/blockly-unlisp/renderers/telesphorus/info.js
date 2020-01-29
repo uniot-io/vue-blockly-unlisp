@@ -17,14 +17,14 @@
 
 /**
  * @fileoverview New (evolving) renderer.
- * Thrasos: spirit of boldness.
+ * Telesphorus: spirit of boldness.
  * @author fenichel@google.com (Rachel Fenichel)
  */
 'use strict'
 
 import * as Blockly from 'blockly/core'
 
-Blockly.thrasos = {}
+Blockly.telesphorus = {}
 /**
  * An object containing all sizing information needed to draw this block.
  *
@@ -32,32 +32,32 @@ Blockly.thrasos = {}
  * may choose to rerender when getSize() is called).  However, calling it
  * repeatedly may be expensive.
  *
- * @param {!Blockly.thrasos.Renderer} renderer The renderer in use.
+ * @param {!Blockly.telesphorus.Renderer} renderer The renderer in use.
  * @param {!Blockly.BlockSvg} block The block to measure.
  * @constructor
  * @package
  * @extends {Blockly.blockRendering.RenderInfo}
  */
-Blockly.thrasos.RenderInfo = function (renderer, block) {
-  Blockly.thrasos.RenderInfo.superClass_.constructor.call(this, renderer, block)
+Blockly.telesphorus.RenderInfo = function (renderer, block) {
+  Blockly.telesphorus.RenderInfo.superClass_.constructor.call(this, renderer, block)
   this.constants_.MIN_BLOCK_HEIGHT = 25
 }
-Blockly.utils.object.inherits(Blockly.thrasos.RenderInfo,
+Blockly.utils.object.inherits(Blockly.telesphorus.RenderInfo,
   Blockly.blockRendering.RenderInfo)
 
 /**
  * Get the block renderer in use.
- * @return {!Blockly.thrasos.Renderer} The block renderer in use.
+ * @return {!Blockly.telesphorus.Renderer} The block renderer in use.
  * @package
  */
-Blockly.thrasos.RenderInfo.prototype.getRenderer = function () {
-  return /** @type {!Blockly.thrasos.Renderer} */ (this.renderer_)
+Blockly.telesphorus.RenderInfo.prototype.getRenderer = function () {
+  return /** @type {!Blockly.telesphorus.Renderer} */ (this.renderer_)
 }
 
 /**
  * @override
  */
-Blockly.thrasos.RenderInfo.prototype.addElemSpacing_ = function () {
+Blockly.telesphorus.RenderInfo.prototype.addElemSpacing_ = function () {
   let hasExternalInputs = false
   for (let i = 0, row;
     (row = this.rows[i]); i++) {
@@ -97,7 +97,7 @@ Blockly.thrasos.RenderInfo.prototype.addElemSpacing_ = function () {
 /**
  * @override
  */
-Blockly.thrasos.RenderInfo.prototype.getInRowSpacing_ = function (prev, next) {
+Blockly.telesphorus.RenderInfo.prototype.getInRowSpacing_ = function (prev, next) {
   if (!prev) {
     // Between an editable field and the beginning of the row.
     if (next && Blockly.blockRendering.Types.isField(next) && next.isEditable) {
@@ -229,7 +229,7 @@ Blockly.thrasos.RenderInfo.prototype.getInRowSpacing_ = function (prev, next) {
 /**
  * @override
  */
-Blockly.thrasos.RenderInfo.prototype.addAlignmentPadding_ = function (row, missingSpace) {
+Blockly.telesphorus.RenderInfo.prototype.addAlignmentPadding_ = function (row, missingSpace) {
   let firstSpacer = row.getFirstSpacer()
   let lastSpacer = row.getLastSpacer()
   if (row.hasExternalInput || row.hasStatement) {
@@ -257,7 +257,7 @@ Blockly.thrasos.RenderInfo.prototype.addAlignmentPadding_ = function (row, missi
 /**
  * @override
  */
-Blockly.thrasos.RenderInfo.prototype.getSpacerRowHeight_ = function (
+Blockly.telesphorus.RenderInfo.prototype.getSpacerRowHeight_ = function (
   prev, next) {
   // If we have an empty block add a spacer to increase the height.
   if (Blockly.blockRendering.Types.isTopRow(prev) &&
@@ -287,7 +287,7 @@ Blockly.thrasos.RenderInfo.prototype.getSpacerRowHeight_ = function (
 /**
  * @override
  */
-Blockly.thrasos.RenderInfo.prototype.getElemCenterline_ = function (row, elem) {
+Blockly.telesphorus.RenderInfo.prototype.getElemCenterline_ = function (row, elem) {
   if (Blockly.blockRendering.Types.isSpacer(elem)) {
     return row.yPos + elem.height / 2
   }
@@ -319,7 +319,7 @@ Blockly.thrasos.RenderInfo.prototype.getElemCenterline_ = function (row, elem) {
 /**
  * @override
  */
-Blockly.thrasos.RenderInfo.prototype.finalize_ = function () {
+Blockly.telesphorus.RenderInfo.prototype.finalize_ = function () {
   // Performance note: this could be combined with the draw pass, if the time
   // that this takes is excessive.  But it shouldn't be, because it only
   // accesses and sets properties that already exist on the objects.
