@@ -10,7 +10,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "blockly": "^3.20191014.4",
+    "blockly": "3.20191014.4",
     "core-js": "^3.3.2",
     "lodash.merge": "^4.6.2",
     "raw-loader": "^4.0.0",
