@@ -65,22 +65,8 @@ Blockly.defineBlocksWithJsonArray([
     'extensions': ['controls_flow_task_count_check']
   },
   {
-    'type': 'unlisp_special_ldr',
-    'message0': '%1',
-    'args0': [{
-      'type': 'field_label_serializable',
-      'name': 'PASS',
-      'text': 'light sensor'
-    }],
-    'inputsInline': true,
-    'output': 'Number',
-    'style': 'special_blocks',
-    'tooltip': '',
-    'helpUrl': ''
-  },
-  {
-    'type': 'unlisp_special_led',
-    'message0': 'led id %1 state %2',
+    'type': 'unlisp_special_dwrite',
+    'message0': 'digital write %2 to pin %1',
     'args0': [
       {
         'type': 'input_value',
@@ -99,6 +85,60 @@ Blockly.defineBlocksWithJsonArray([
     'inputsInline': true,
     'previousStatement': null,
     'nextStatement': null,
+    'style': 'special_blocks',
+    'tooltip': '',
+    'helpUrl': ''
+  },
+  {
+    'type': 'unlisp_special_dread',
+    'message0': 'digital read %1 pin',
+    'args0': [
+      {
+        'type': 'input_value',
+        'name': 'ID',
+        'check': 'Number'
+      }
+    ],
+    'inputsInline': true,
+    'output': 'Number',
+    'style': 'special_blocks',
+    'tooltip': '',
+    'helpUrl': ''
+  },
+  {
+    'type': 'unlisp_special_awrite',
+    'message0': 'analog write %2 to pin %1',
+    'args0': [
+      {
+        'type': 'input_value',
+        'name': 'ID',
+        'check': 'Number'
+      },
+      {
+        'type': 'input_value',
+        'name': 'STATE',
+        'check': 'Number'
+      }
+    ],
+    'inputsInline': true,
+    'previousStatement': null,
+    'nextStatement': null,
+    'style': 'special_blocks',
+    'tooltip': '',
+    'helpUrl': ''
+  },
+  {
+    'type': 'unlisp_special_aread',
+    'message0': 'analog read %1 pin',
+    'args0': [
+      {
+        'type': 'input_value',
+        'name': 'ID',
+        'check': 'Number'
+      }
+    ],
+    'inputsInline': true,
+    'output': 'Number',
     'style': 'special_blocks',
     'tooltip': '',
     'helpUrl': ''

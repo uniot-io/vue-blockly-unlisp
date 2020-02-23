@@ -156,10 +156,7 @@
     <block type="unlisp_special_task_pass">
       <field name="PASS">task pass</field>
     </block>
-    <block type="unlisp_special_ldr">
-      <field name="PASS">light sensor</field>
-    </block>
-    <block type="unlisp_special_led">
+    <block type="unlisp_special_dwrite">
       <value name="ID">
         <shadow type="math_number">
           <field name="NUM">0</field>
@@ -168,6 +165,32 @@
       <value name="STATE">
         <shadow type="logic_boolean">
           <field name="BOOL">TRUE</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="unlisp_special_dread">
+      <value name="ID">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="unlisp_special_awrite">
+      <value name="ID">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="STATE">
+        <shadow type="math_number">
+          <field name="NUM">123</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="unlisp_special_aread">
+      <value name="ID">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
         </shadow>
       </value>
     </block>

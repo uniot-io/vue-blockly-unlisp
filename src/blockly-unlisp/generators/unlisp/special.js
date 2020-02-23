@@ -11,15 +11,26 @@ Blockly.UnLisp['unlisp_special_task'] = function (block) {
   return '(task ' + times + ' ' + ms + ' \'(list ' + Blockly.UnLisp.cleanCode(branch) + '))\n'
 }
 
-Blockly.UnLisp['unlisp_special_led'] = function (block) {
-  // Repeat n times.
+Blockly.UnLisp['unlisp_special_dwrite'] = function (block) {
   var id = Blockly.UnLisp.valueToCode(block, 'ID', Blockly.UnLisp.ORDER_NONE) || '0'
   var state = Blockly.UnLisp.valueToCode(block, 'STATE', Blockly.UnLisp.ORDER_NONE) || '0'
-  return '(led ' + id + ' ' + state + ')'
+  return '(dwrite ' + id + ' ' + state + ')'
 }
 
-Blockly.UnLisp['unlisp_special_ldr'] = function () {
-  return ['(ldr)', Blockly.UnLisp.ORDER_HIGH]
+Blockly.UnLisp['unlisp_special_dread'] = function (block) {
+  var id = Blockly.UnLisp.valueToCode(block, 'ID', Blockly.UnLisp.ORDER_NONE) || '0'
+  return '(dread ' + id + ')'
+}
+
+Blockly.UnLisp['unlisp_special_awrite'] = function (block) {
+  var id = Blockly.UnLisp.valueToCode(block, 'ID', Blockly.UnLisp.ORDER_NONE) || '0'
+  var state = Blockly.UnLisp.valueToCode(block, 'STATE', Blockly.UnLisp.ORDER_NONE) || '0'
+  return '(awrite ' + id + ' ' + state + ')'
+}
+
+Blockly.UnLisp['unlisp_special_aread'] = function (block) {
+  var id = Blockly.UnLisp.valueToCode(block, 'ID', Blockly.UnLisp.ORDER_NONE) || '0'
+  return '(aread ' + id + ')'
 }
 
 Blockly.UnLisp['unlisp_special_task_pass'] = function () {
