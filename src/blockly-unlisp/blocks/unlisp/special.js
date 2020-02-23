@@ -400,7 +400,7 @@ Blockly.Blocks['unlisp_special_primitive_container'] = {
       return value
     })
     this.appendDummyInput()
-      .appendField('primitive returns value')
+      .appendField('primitive returns value  ')
       .appendField(this.isReturnField_, 'IS_RETURN')
 
     this.setStyle('special_blocks')
