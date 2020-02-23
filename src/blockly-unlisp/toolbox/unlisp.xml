@@ -194,7 +194,7 @@
         </shadow>
       </value>
     </block>
-    <block type="unlisp_special_primitive_value">
+    <block type="unlisp_special_primitive">
       <mutation items="2" is_return='true'></mutation>
     </block>
   </category>

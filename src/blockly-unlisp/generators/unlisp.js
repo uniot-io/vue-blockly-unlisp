@@ -53,6 +53,8 @@ Blockly.UnLisp.init = function (workspace) {
   // to actual function names (to avoid collisions with user functions).
   Blockly.UnLisp.functionNames_ = Object.create(null)
 
+  Blockly.UnLisp.primitivesNames_ = {}
+
   if (!Blockly.UnLisp.variableDB_) {
     Blockly.UnLisp.variableDB_ = new Blockly.Names(Blockly.UnLisp.RESERVED_WORDS_)
   } else {
@@ -169,6 +171,15 @@ Blockly.UnLisp.cleanCode = function (src) {
   dst = dst.replace(/\s+/g, ' ').trim() // remove extra spaces
   dst = dst.replace(/\(?<=[(|[]\)\s+|\s+(?=[\]|)])/g, '') // remove all spaces before and after parentheses
   return dst
+}
+
+Blockly.UnLisp.pushPrimitive = function (name) {
+  Blockly.UnLisp.primitivesNames_[name] = true
+}
+
+Blockly.UnLisp.getPrimitives = function () {
+  var primitives = Blockly.UnLisp.primitivesNames_ ? Object.keys(Blockly.UnLisp.primitivesNames_) : []
+  return primitives
 }
 
 Blockly.UnLisp.checkChildrenType = function (block, fieldNames, type) {

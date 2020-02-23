@@ -61,6 +61,10 @@ let BlocklyComponent = {
       return Blockly.UnLisp.workspaceToCode(this.workspace)
     },
 
+    getPrimitives () {
+      return Blockly.UnLisp.getPrimitives()
+    },
+
     serialize () {
       const xml = Blockly.Xml.workspaceToDom(this.workspace)
       return Blockly.Xml.domToText(xml)

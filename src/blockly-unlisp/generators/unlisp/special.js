@@ -19,7 +19,8 @@ Blockly.UnLisp['unlisp_special_dwrite'] = function (block) {
 
 Blockly.UnLisp['unlisp_special_dread'] = function (block) {
   var id = Blockly.UnLisp.valueToCode(block, 'ID', Blockly.UnLisp.ORDER_NONE) || '0'
-  return '(dread ' + id + ')'
+  var code = '(dread ' + id + ')'
+  return [code, Blockly.UnLisp.ORDER_ATOMIC]
 }
 
 Blockly.UnLisp['unlisp_special_awrite'] = function (block) {
@@ -30,13 +31,25 @@ Blockly.UnLisp['unlisp_special_awrite'] = function (block) {
 
 Blockly.UnLisp['unlisp_special_aread'] = function (block) {
   var id = Blockly.UnLisp.valueToCode(block, 'ID', Blockly.UnLisp.ORDER_NONE) || '0'
-  return '(aread ' + id + ')'
+  var code = '(aread ' + id + ')'
+  return [code, Blockly.UnLisp.ORDER_ATOMIC]
 }
 
 Blockly.UnLisp['unlisp_special_task_pass'] = function () {
   return ['#t_pass', Blockly.UnLisp.ORDER_HIGH]
 }
 
-Blockly.UnLisp['unlisp_special_primitive_value'] = function () {
-  return '()'
+Blockly.UnLisp['unlisp_special_primitive'] = function (block) {
+  var isStatement = !block.outputConnection
+
+  var primitive = block.getFieldValue('PRIMITIVE')
+  Blockly.UnLisp.pushPrimitive(primitive)
+
+  var elements = new Array(block.itemCount_)
+  for (var i = 0; i < block.itemCount_; i++) {
+    elements[i] = Blockly.UnLisp.valueToCode(block, 'ADD' + i, Blockly.UnLisp.ORDER_NONE) || '()'
+  }
+  var code = '(' + primitive + ' ' + (elements.length ? elements.join(' ') : '()') + ')'
+
+  return isStatement ? code : [code, Blockly.UnLisp.ORDER_ATOMIC]
 }

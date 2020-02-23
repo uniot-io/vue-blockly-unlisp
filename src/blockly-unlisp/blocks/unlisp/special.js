@@ -236,17 +236,25 @@ Blockly.Constants.Loops.CONTROL_FLOW_TASK_COUNT_CHECK_MIXIN = {
 
 Blockly.Extensions.registerMixin('controls_flow_task_count_check', Blockly.Constants.Loops.CONTROL_FLOW_TASK_COUNT_CHECK_MIXIN)
 
-Blockly.Blocks['unlisp_special_primitive_value'] = {
+Blockly.Blocks['unlisp_special_primitive'] = {
 
   init: function () {
     this.setHelpUrl('')
     this.setStyle('special_blocks')
     this.itemCount_ = 2
-    this.isReturn_ = true
+    this.setReturn_(true)
     this.updateShape_()
     this.setMutator(new Blockly.Mutator(['unlisp_special_primitive_item']))
     this.setTooltip('')
   },
+
+  setReturn_: function (value) {
+    if (this.isReturn_ !== value) {
+      this.unplug(true)
+    }
+    this.isReturn_ = value
+  },
+
   /**
    * Create XML to represent inputs.
    * @return {!Element} XML storage element.
@@ -265,7 +273,7 @@ Blockly.Blocks['unlisp_special_primitive_value'] = {
    */
   domToMutation: function (xmlElement) {
     this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10)
-    this.isReturn_ = xmlElement.getAttribute('is_return') === 'true'
+    this.setReturn_(xmlElement.getAttribute('is_return') === 'true')
     this.updateShape_()
   },
   /**
@@ -310,7 +318,7 @@ Blockly.Blocks['unlisp_special_primitive_value'] = {
       }
     }
     this.itemCount_ = connections.length
-    this.isReturn_ = containerBlock.isReturn()
+    this.setReturn_(containerBlock.isReturn())
     this.updateShape_()
     // Reconnect any child blocks.
     for (let i = 0; i < this.itemCount_; i++) {
@@ -339,7 +347,7 @@ Blockly.Blocks['unlisp_special_primitive_value'] = {
    * @this {Blockly.Block}
    */
   updateShape_: function () {
-    const fieldPrimitiveName = new Blockly.FieldTextInput('user', function (name) {
+    const fieldPrimitiveName = new Blockly.FieldTextInput('user_primitive', function (name) {
       return name.replace(/\s+/g, '_')
     })
 

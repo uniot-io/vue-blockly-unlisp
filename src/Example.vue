@@ -31,6 +31,8 @@ export default {
   methods: {
     showCode() {
       this.code = this.$refs.blockly.getCode()
+      this.code += '\n\n'
+      this.code += `Primitives: ${this.$refs.blockly.getPrimitives()}`
     }
   }
 }
