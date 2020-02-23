@@ -43,13 +43,14 @@ Blockly.UnLisp['unlisp_special_primitive'] = function (block) {
   var isStatement = !block.outputConnection
 
   var primitive = block.getFieldValue('PRIMITIVE')
-  Blockly.UnLisp.pushPrimitive(primitive)
 
   var elements = new Array(block.itemCount_)
   for (var i = 0; i < block.itemCount_; i++) {
     elements[i] = Blockly.UnLisp.valueToCode(block, 'ADD' + i, Blockly.UnLisp.ORDER_NONE) || '()'
   }
   var code = '(' + primitive + ' ' + (elements.length ? elements.join(' ') : '()') + ')'
+
+  Blockly.UnLisp.pushPrimitive(primitive, elements.length)
 
   return isStatement ? code : [code, Blockly.UnLisp.ORDER_ATOMIC]
 }
