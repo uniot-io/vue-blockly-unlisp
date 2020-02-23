@@ -36,3 +36,7 @@ Blockly.UnLisp['unlisp_special_aread'] = function (block) {
 Blockly.UnLisp['unlisp_special_task_pass'] = function () {
   return ['#t_pass', Blockly.UnLisp.ORDER_HIGH]
 }
+
+Blockly.UnLisp['unlisp_special_primitive_value'] = function () {
+  return '()'
+}
