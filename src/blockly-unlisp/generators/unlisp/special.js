@@ -39,6 +39,12 @@ Blockly.UnLisp['unlisp_special_task_pass'] = function () {
   return ['#t_pass', Blockly.UnLisp.ORDER_HIGH]
 }
 
+Blockly.UnLisp['unlisp_special_bclicked'] = function (block) {
+  var id = Blockly.UnLisp.valueToCode(block, 'ID', Blockly.UnLisp.ORDER_NONE) || '0'
+  var code = '(bclicked ' + id + ')'
+  return [code, Blockly.UnLisp.ORDER_ATOMIC]
+}
+
 Blockly.UnLisp['unlisp_special_primitive'] = function (block) {
   var isStatement = !block.outputConnection
 

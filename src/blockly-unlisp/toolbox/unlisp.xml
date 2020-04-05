@@ -194,6 +194,13 @@
         </shadow>
       </value>
     </block>
+    <block type="unlisp_special_bclicked">
+      <value name="ID">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+    </block>
     <block type="unlisp_special_primitive">
       <mutation items="2" is_return='true'></mutation>
     </block>

@@ -100,7 +100,7 @@ Blockly.defineBlocksWithJsonArray([
       }
     ],
     'inputsInline': true,
-    'output': 'Number',
+    'output': 'Boolean',
     'style': 'special_blocks',
     'tooltip': '',
     'helpUrl': ''
@@ -139,6 +139,20 @@ Blockly.defineBlocksWithJsonArray([
     ],
     'inputsInline': true,
     'output': 'Number',
+    'style': 'special_blocks',
+    'tooltip': '',
+    'helpUrl': ''
+  },
+  {
+    'type': 'unlisp_special_bclicked',
+    'message0': 'is button %1 clicked',
+    'args0': [{
+      'type': 'input_value',
+      'name': 'ID',
+      'check': 'Number'
+    }],
+    'inputsInline': true,
+    'output': 'Boolean',
     'style': 'special_blocks',
     'tooltip': '',
     'helpUrl': ''
