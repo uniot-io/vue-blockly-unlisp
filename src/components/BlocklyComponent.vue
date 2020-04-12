@@ -9,7 +9,7 @@ import { UnlispToolbox, UnlispTheme } from '../blockly-unlisp'
 
 let BlocklyComponent = {
   name: 'BlocklyComponent',
-  props: ['options'],
+  props: ['options', 'scheme'],
 
   data () {
     return {
@@ -38,17 +38,37 @@ let BlocklyComponent = {
     }
   },
 
+  watch: {
+    scheme (value) {
+      this.deserialize(value)
+    }
+  },
+
   mounted () {
-    var options = merge(this.defaultOptions, this.options)
+    const options = merge(this.defaultOptions, this.options)
     this.workspace = Blockly.inject(this.$refs['blockly-div'], options)
     Blockly.BlockSvg.START_HAT = true
     const filterId = this._injectCustomFilter()
     if (filterId) {
       this.workspace.options.embossFilterId = filterId
     }
+
+    this.workspace.addChangeListener(this.onChange);
+
+    if (this.scheme) {
+      this.deserialize(this.scheme)
+    }
+  },
+
+  beforeDestroy () {
+    this.workspace.removeChangeListener(this.onChange);
   },
 
   methods: {
+    onChange (event) {
+      this.$emit('change', event)
+    },
+
     resize () {
       Blockly.svgResize(this.workspace)
     },

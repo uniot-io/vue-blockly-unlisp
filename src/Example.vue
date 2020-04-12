@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <BlocklyComponent id="blockly" :options="options" ref="blockly"/>
+    <BlocklyComponent id="blockly" :options="options" :scheme="scheme" ref="blockly" @change="onChange"/>
 
     <p id="code">
       <button @click="showCode">Show UnLisp</button>
@@ -20,6 +20,7 @@ export default {
 
   data () {
     return {
+      scheme: '<xml xmlns="https://developers.google.com/blockly/xml"><block type="text_print" id="zP!pksG8l,GYkJw/jF6M" x="163" y="263"><value name="TEXT"><shadow type="text" id="p[YBSW4Nc1Etc.rpscUi"><field name="TEXT">abc</field></shadow></value></block></xml>',
       code: '',
       options: {
         grid: {
@@ -29,10 +30,19 @@ export default {
     }
   },
   methods: {
-    showCode() {
+    showCode () {
       this.code = this.$refs.blockly.getCode()
       this.code += '\n\n'
       this.code += `Primitives:\n${JSON.stringify(this.$refs.blockly.getPrimitives(), null, 2)}`
+    },
+
+    onChange (event) {
+      const ignoredEvent = this.$refs.blockly.getBlockly().Events.UI;
+      if (event.type !== ignoredEvent) {
+        // eslint-disable-next-line no-console
+        console.log(event.type)
+        this.showCode()
+      }
     }
   }
 }
