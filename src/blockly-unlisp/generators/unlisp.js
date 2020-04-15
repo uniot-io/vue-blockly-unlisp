@@ -120,9 +120,60 @@ Blockly.UnLisp.scrubNakedValue = function (line) {
  * @private
  */
 Blockly.UnLisp.quote_ = function (string) {
-  string = string.replace(/\\/g, '\\\\')
-    .replace(/\n/g, '\\\n')
-    .replace(/'/g, '\\\'')
+  // string = string.replace(/\\/g, '\\\\')
+  //   .replace(/\n/g, '\\\n')
+  //   .replace(/'/g, '\\\'')
+  string = string
+    .replace(/'/g, '?')
+    .replace(/\[/g, '?')
+    .replace(/\]/g, '?')
+    .replace(/\{/g, '?')
+    .replace(/\}/g, '?')
+    .replace(/\\/g, '?')
+    .trim()
+
+  const spaceCount = string.split(' ').length - 1
+
+  let complete = 0
+  let splited = false
+  let error = false
+  let wasOpen = false
+  for (let i = 0; i < string.length; i++) {
+    const char = string[i]
+    complete += char === '(' ? 1 : 0
+    complete -= char === ')' ? 1 : 0
+
+    if (!splited && i > 0 && i < (string.length - 1)) {
+      splited = complete === 0
+    }
+
+    if (!wasOpen && complete > 0) {
+      wasOpen = true
+    }
+
+    if (complete < 0) {
+      error = true
+      break
+    }
+  }
+
+  if (complete > 0) {
+    error = true
+  }
+
+  if (!wasOpen && spaceCount > 0) {
+    error = true
+  }
+
+  if (error) {
+    string = string
+      .replace(/\s+/g, '_')
+      .replace(/\(/g, '?')
+      .replace(/\)/g, '?')
+  } else if (splited && spaceCount > 0) {
+    string = '(list ' + string + ')'
+  }
+
   return '\'' + string
 }
 

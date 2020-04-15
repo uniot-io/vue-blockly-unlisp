@@ -20,6 +20,9 @@ Blockly.UnLisp['controls_if'] = function (block) {
         Blockly.UnLisp.injectId(Blockly.UnLisp.STATEMENT_SUFFIX, block),
         Blockly.UnLisp.INDENT) + branchCode
     }
+    if (branchCode.length > 2) {
+      branchCode = '(list ' + branchCode + ')'
+    }
     code = code.replace('{else}', '')
     code += (n > 0 ? ' ' : '') + '(if ' + conditionCode + ' ' + Blockly.UnLisp.cleanCode(branchCode) + (n > 0 ? '{else})' : '{else}')
     ++n
@@ -31,6 +34,9 @@ Blockly.UnLisp['controls_if'] = function (block) {
       branchCode = Blockly.UnLisp.prefixLines(
         Blockly.UnLisp.injectId(Blockly.UnLisp.STATEMENT_SUFFIX, block),
         Blockly.UnLisp.INDENT) + branchCode
+    }
+    if (branchCode.length > 2) {
+      branchCode = '(list ' + branchCode + ')'
     }
     code = code.replace('{else}', ' ' + Blockly.UnLisp.cleanCode(branchCode))
   } else {
